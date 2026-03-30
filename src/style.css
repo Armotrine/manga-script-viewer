@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Hiragino Sans", "Noto Sans CJK SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: #1a1a1a;
+  color: #e8e8e8;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #2a2a2a;
+  border-bottom: 1px solid #3a3a3a;
+  flex-shrink: 0;
+  -webkit-app-region: drag;
+}
+
+.app-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+.btn-open {
+  -webkit-app-region: no-drag;
+  padding: 5px 14px;
+  background: #4a9eff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.btn-open:hover {
+  background: #3a8eef;
+}
+
+.folder-name {
+  font-size: 12px;
+  color: #777;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Main viewer */
+.viewer {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+}
+
+.welcome {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 16px;
+}
+
+.panels {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Panels */
+.panel {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-panel {
+  background: #111;
+  position: relative;
+}
+
+.image-panel img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.no-image, .no-markdown {
+  color: #444;
+  font-size: 14px;
+}
+
+.divider {
+  width: 1px;
+  background: #3a3a3a;
+  flex-shrink: 0;
+}
+
+.markdown-panel {
+  background: #1e1e1e;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 24px 28px;
+}
+
+#markdown-content {
+  width: 100%;
+  max-width: 680px;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+/* Markdown styles */
+#markdown-content h1 {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
+}
+
+#markdown-content h2 {
+  font-size: 13px;
+  color: #aaa;
+  margin: 20px 0 8px;
+  font-weight: 600;
+}
+
+#markdown-content p {
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+#markdown-content strong {
+  color: #e8e8e8;
+}
+
+#markdown-content code {
+  background: #2a2a2a;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+#markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+#markdown-content th, #markdown-content td {
+  border: 1px solid #3a3a3a;
+  padding: 6px 10px;
+  text-align: left;
+}
+
+#markdown-content th {
+  background: #2a2a2a;
+}
+
+/* Navigation bar */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: #2a2a2a;
+  border-top: 1px solid #3a3a3a;
+  flex-shrink: 0;
+}
+
+.btn-nav {
+  padding: 5px 18px;
+  background: #333;
+  color: #ccc;
+  border: 1px solid #444;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  min-width: 90px;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.btn-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.page-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+#current-stem {
+  font-size: 12px;
+  color: #666;
+}
+
+#current-page {
+  cursor: pointer;
+  text-decoration: underline dotted #555;
+}
+
+#current-page:hover {
+  color: #fff;
+}
+
+#page-input {
+  width: 48px;
+  background: #2a2a2a;
+  border: 1px solid #4a9eff;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  padding: 1px 4px;
+  outline: none;
+}
+
+.page-counter {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* Utilities */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive: stack vertically on narrow windows */
+@media (max-width: 700px) {
+  .panels {
+    flex-direction: column;
+  }
+  .divider {
+    width: 100%;
+    height: 1px;
+  }
+  .image-panel {
+    max-height: 50%;
+  }
+}

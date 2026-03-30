@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manga Script Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="toolbar">
+    <span class="app-title">Manga Script Viewer</span>
+    <button id="btn-open" class="btn-open">打开文件夹</button>
+    <span id="folder-name" class="folder-name"></span>
+  </header>
+
+  <main class="viewer" id="viewer">
+    <div class="welcome" id="welcome">
+      <p>点击「打开文件夹」选择包含图片和翻译文件的文件夹</p>
+    </div>
+
+    <div class="panels hidden" id="panels">
+      <div class="panel image-panel" id="image-panel">
+        <img id="manga-image" src="" alt="漫画图片">
+        <div class="no-image hidden" id="no-image">无图片</div>
+      </div>
+      <div class="divider"></div>
+      <div class="panel markdown-panel" id="markdown-panel">
+        <div id="markdown-content"></div>
+        <div class="no-markdown hidden" id="no-markdown">无翻译文档</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="nav-bar hidden" id="nav-bar">
+    <button class="btn-nav" id="btn-prev">← 上一页</button>
+    <span class="page-info">
+      <span id="current-stem"></span>
+      <span class="page-counter">
+        <span id="current-page" title="点击跳页">1</span>
+        <input id="page-input" type="number" min="1" class="hidden">
+        / <span id="total-pages">1</span>
+      </span>
+    </span>
+    <button class="btn-nav" id="btn-next">下一页 →</button>
+  </footer>
+
+  <script src="marked.min.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
